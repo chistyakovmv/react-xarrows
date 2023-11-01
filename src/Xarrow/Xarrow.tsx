@@ -25,6 +25,9 @@ const Xarrow: React.FC<xarrowPropsType> = (props: xarrowPropsType) => {
   const [propsRefs] = xProps;
 
   let {
+    gradient,
+    gradientColor1,
+    gradientColor2,
     labels,
     lineColor,
     headColor,
@@ -210,13 +213,20 @@ const Xarrow: React.FC<xarrowPropsType> = (props: xarrowPropsType) => {
             overflow="auto"
             {...SVGcanvasProps}>
             {/* body of the arrow */}
+            <defs>
+              <linearGradient id="myGradient" >
+                <stop offset="0%" stopColor={gradientColor1} />
+                <stop offset="100%" stopColor={gradientColor2} />
+              </linearGradient>
+            </defs>
             <path
               ref={lineRef}
               d={st.arrowPath}
-              stroke={lineColor}
+              stroke={gradient ? "url('#myGradient')" : lineColor}
               strokeDasharray={dashArray}
               // strokeDasharray={'0 0'}
               strokeWidth={strokeWidth}
+              strokeLinecap={"round"}
               fill="transparent"
               pointerEvents="visibleStroke"
               {...(passProps as any)}

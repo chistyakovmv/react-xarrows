@@ -21,6 +21,10 @@ export type xarrowPropsType = {
   curveness?: number;
   gridBreak?: string;
   // gridRadius?: number;
+  roundedCorners?: boolean;
+  gradient?: boolean;
+  gradientColor1?: string;
+  gradientColor2?: string;
   dashness?:
     | boolean
     | {

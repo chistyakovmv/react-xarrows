@@ -154,12 +154,16 @@ const parsePropsFuncs: Required<{ [key in keyof xarrowPropsType]: Function }> = 
   path: noParseWithUpdatePos,
   curveness: parseNumWithUpdatePos,
   gridBreak: (userProp, _, updatePos) => withUpdate(parseGridBreak(userProp), updatePos),
+  roundedCorners: noParse,
   // // gridRadius = strokeWidth * 2, //todo
   dashness: (userProp, propsRefs) => parseDashness(userProp, propsRefs),
   headShape: (userProp) => parseEdgeShape(userProp),
   tailShape: (userProp) => parseEdgeShape(userProp),
   showXarrow: noParse,
   animateDrawing: noParse,
+  gradient: noParse,
+  gradientColor1: noParse,
+  gradientColor2: noParse,
   zIndex: parseNum,
   passProps: noParse,
   arrowBodyProps: noParseWithUpdatePos,
@@ -214,6 +218,10 @@ const defaultProps: Required<xarrowPropsType> = {
   curveness: 0.8,
   gridBreak: '50%',
   // gridRadius : strokeWidth * 2, //todo
+  roundedCorners: false,
+  gradient: false,
+  gradientColor1: "",
+  gradientColor2:"",
   dashness: false,
   headShape: 'arrow1',
   tailShape: 'arrow1',
@@ -257,6 +265,10 @@ type parsedXarrowProps = {
   curveness: number;
   gridBreak: { relative: number; abs: number };
   // gridRadius: number;
+  roundedCorners: boolean;
+  gradient: boolean;
+  gradientColor1: string;
+  gradientColor2: string;
   dashness: {
     strokeLen: number;
     nonStrokeLen: number;
